@@ -46,12 +46,12 @@ This will inherit the entire development environment into your own `flake.nix`.
 For example:
 
 ``` Makefile
-CFLAGS=-Wall
-CFLAGS+=`pkg-config --cflags raylib`
+CFLAGS=-Wall -Wextra -pedantic
+PKGS=x11 raylib
+CFLAGS+=`pkg-config --cflags $(PKGS)`
 
 LIBS=-lGL -lm -lpthread -ldl -lrt
-LIBS+=`pkg-config --libs raylib`
-LIBS+=`pkg-config --libs x11`
+LIBS+=`pkg-config --libs $(PKGS)`
 
 all:
 	gcc src/main.c $(CFLAGS) $(LIBS)
