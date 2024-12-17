@@ -14,23 +14,19 @@
         packages = with pkgs; [
           # raylib itself
           raylib
-
           # OpenGL calls
           libGL
-
           # X11 dependencies
-          # xorg.libX11
+          xorg.libX11
           xorg.libX11.dev
           xorg.libXcursor
           xorg.libXi
           xorg.libXinerama
           xorg.libXrandr
           xorg.libXft
-          pkg-config
-
+          pkg-config # needed for X11 nad raylib
           # LSP
-          bear
-
+          bear # just run `bear -- make`!
           # Uncomment the line below if you want to build Raylib with web support
           # emscripten
         ];
