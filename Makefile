@@ -1,5 +1,5 @@
 
-CFLAGS=-Wall
+CFLAGS=-Wall -Wextra -pedantic
 CFLAGS+=`pkg-config --cflags raylib`
 
 LIBS=-lGL -lm -lpthread -ldl -lrt
