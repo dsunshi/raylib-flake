@@ -1,6 +1,5 @@
 { pkgs }:
 pkgs.stdenv.mkDerivation {
-  # name = pkgName;
   name = "raylib-5.5";
 
   src = pkgs.fetchFromGitHub {
@@ -12,7 +11,6 @@ pkgs.stdenv.mkDerivation {
 
   nativeBuildInputs = with pkgs; [
     libGL
-    # xorg.libX11
     xorg.libX11.dev
     xorg.libXcursor
     xorg.libXi
@@ -21,7 +19,6 @@ pkgs.stdenv.mkDerivation {
     xorg.libXft
   ];
 
-  # prefix=$out
   raylib_pkg = pkgs.writeText "raylib.pc" ''
     exec_prefix=''${prefix}
     includedir=''${prefix}/include
@@ -41,12 +38,14 @@ pkgs.stdenv.mkDerivation {
       make PLATFORM=PLATFORM_DESKTOP
       mkdir -p $out/include
       mkdir -p $out/lib
+      # Header files
       cp raylib.h $out/include/
       cp raymath.h $out/include/
       cp rlgl.h $out/include/
+      # Static lib
       cp libraylib.a $out/lib/
+      # Setup the .pc file in these two steps so we can set `prefix=$out`
       echo "prefix=$out" > $out/raylib.pc
       cat $raylib_pkg >> $out/raylib.pc
     '';
-  # cp $raylib_pkg $out/raylib.pc
 }
