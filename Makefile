@@ -1,10 +1,11 @@
 
+
 CFLAGS=-Wall -Wextra -pedantic
-CFLAGS+=`pkg-config --cflags raylib`
+PKGS=x11 raylib
+CFLAGS+=`pkg-config --cflags $(PKGS)`
 
 LIBS=-lGL -lm -lpthread -ldl -lrt
-LIBS+=`pkg-config --libs raylib`
-LIBS+=`pkg-config --libs x11`
+LIBS+=`pkg-config --libs $(PKGS)`
 
 all:
 	gcc src/main.c $(CFLAGS) $(LIBS)
