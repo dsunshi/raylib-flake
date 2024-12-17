@@ -1,5 +1,5 @@
 
-# Useage
+# Getting Started
 
 Choose one of the two below Installation methods and you will be able to run:
 ```bash
@@ -12,12 +12,14 @@ and have full access to Raylib 5.5 via `pkg-config raylib`.
 
 There are two main ways to use this repository:
 
-#  Clone it as is so you may tweak `flake.nix` and `raylib.nix` as needed.
+#### Clone this repository
+
+Advantage is that you may tweak `flake.nix` and `raylib.nix` as needed.
 
 > [!TIP]
 > The included `Makefile` and `main.c` should build as well and provide a simple example.
 
-## Use this repository as a flake in your own environment:
+#### Use this repository as a flake in your own environment:
 
 This will inherit the entire development environment into your own `flake.nix`.
 
